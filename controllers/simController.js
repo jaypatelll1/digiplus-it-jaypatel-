@@ -1,4 +1,4 @@
-const SimCard = require('../models/1');
+const SimCard = require('../models/SimCard');
 
 exports.activateSim = async (req, res) => {
   const { simNumber } = req.body;
@@ -15,6 +15,30 @@ exports.activateSim = async (req, res) => {
     res.status(500).json({ msg: 'Server error' });
   }
 };
+
+exports.addSimCard = async (req, res) => {
+  const { simNumber, phoneNumber } = req.body;
+
+  try {
+   
+    let sim = await SimCard.findOne({ simNumber });
+    if (sim) {
+      return res.status(400).json({ msg: 'SIM card already exists' });
+    }
+
+    sim = new SimCard({
+      simNumber,
+      phoneNumber,
+      status: 'inactive', 
+    });
+
+    await sim.save();
+    res.status(201).json({ msg: 'SIM card added successfully', sim });
+  } catch (error) {
+    res.status(500).json({ msg: 'Server error' });
+  }
+};
+
 
 exports.deactivateSim = async (req, res) => {
   const { simNumber } = req.body;

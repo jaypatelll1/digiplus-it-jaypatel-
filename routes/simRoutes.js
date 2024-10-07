@@ -8,4 +8,6 @@ router.post('/deactivate', simController.deactivateSim);
 
 router.get('/sim-details/:simNumber', simController.getSimDetails);
 
+router.post('/add', simController.addSimCard);
+
 module.exports = router;
