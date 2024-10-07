@@ -15,7 +15,7 @@ Follow these steps to set up and run the frontend locally.
 
 ## 1. Clone the Repository
 
-git clone https://github.com/jaypatelll1/sim-card-frontend.git
+git clone https://github.com/jaypatelll1/digiplus-it-jaypatel-
 ```bash
 cd sim-card-frontend
 ```
